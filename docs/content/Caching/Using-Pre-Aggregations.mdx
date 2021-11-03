@@ -258,6 +258,30 @@ slow to return results.
 (such as AWS Athena and BigQuery). Repeatedly querying for this data can easily
 rack up costs.
 
+## Joins between pre-aggregations
+
+<WarningBox>
+
+This feature is in Preview and the API may change in a future release.
+
+</WarningBox>
+
+When making a query that joins data from two different cubes, Cube can use
+pre-aggregations instead of running the base SQL queries. To get started, first
+ensure both cubes have valid pre-aggregations:
+
+```javascript
+// Orders
+
+// Users
+```
+
+Then add a new pre-aggregation of type `rollupJoin`:
+
+```javascript
+
+```
+
 ## Pre-Aggregation Build Strategies
 
 <InfoBox>
@@ -267,9 +291,9 @@ Refresh Worker. [See here for more details][ref-prod-list-refresh].
 
 </InfoBox>
 
-Cube supports three different strategies for building pre-aggregations.
-To see which strategies your database supports, please refer to it's individual
-page from [Connecting to the Database][ref-config-db].
+Cube supports three different strategies for building pre-aggregations. To see
+which strategies your database supports, please refer to it's individual page
+from [Connecting to the Database][ref-config-db].
 
 ### Simple
 
